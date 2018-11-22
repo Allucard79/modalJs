@@ -1,5 +1,5 @@
 'use strict';
-var showModal = function (href) {
+var showModal = function () {
   return function (event) {
     console.log('show modal')
     event.preventDefault();
@@ -7,7 +7,8 @@ var showModal = function (href) {
     for (var i = 0; i < allModals.length; i++) {
       allModals[i].classList.remove('show');
     }
-    document.querySelector(href).classList.add('show');
+    //document.querySelector(href).classList.add('show');
+    console.log(this)
     document.querySelector('#modal-overlay').classList.add('show');
   };
 }
@@ -15,8 +16,7 @@ var showModal = function (href) {
 var modalLinks = document.querySelectorAll('.show-modal');
 console.log('modalLinks', modalLinks)
 for (var i = 0; i < modalLinks.length; i++) {
-  var href = modalLinks[i].getAttribute('href')
-  modalLinks[i].addEventListener('click', showModal(href));
+  modalLinks[i].addEventListener('click', showModal);
 }
 
 var hideModal = function (event) {
